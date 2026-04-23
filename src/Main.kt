@@ -2,10 +2,10 @@ fun main() {
 
     // Objek
     val pelanggan = Pelanggan(3000)
-    val mesin = MesinPrint(5, 5)
+    val mesin = MesinPrint(7, 7)
 
     val dokumenGagal = Dokumen(10)
-    val dokumenSukses = Dokumen(2)
+    val dokumenSukses = Dokumen(5)
 
     println("===== SIMULASI GAGAL =====")
     mesin.cetakDokumen(dokumenGagal, pelanggan)
@@ -69,4 +69,3 @@ class MesinPrint(private var tinta: Int, private var kertas: Int) {
         println("Sisa kertas: $kertas")
     }
 }
-dfwydfwq
