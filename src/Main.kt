@@ -69,3 +69,4 @@ class MesinPrint(private var tinta: Int, private var kertas: Int) {
         println("Sisa kertas: $kertas")
     }
 }
+dfwydfwq
