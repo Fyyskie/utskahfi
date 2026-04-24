@@ -1,43 +1,22 @@
 fun main() {
 
-    // Objek
-    val pelanggan = Pelanggan(3000)
-    val mesin = MesinPrint(7, 7)
+    val pelanggan = Pelanggan(5000)
+    val mesin = MesinPrint(10, 10)
+    val dokumen = Dokumen(5)
 
-    val dokumenGagal = Dokumen(10)
-    val dokumenSukses = Dokumen(5)
-
-    println("===== SIMULASI GAGAL =====")
-    mesin.cetakDokumen(dokumenGagal, pelanggan)
-
-    println("\n===== SIMULASI SUKSES =====")
-    mesin.cetakDokumen(dokumenSukses, pelanggan)
+    mesin.cetakDokumen(dokumen, pelanggan)
 }
 
 // ================= CLASS PELANGGAN =================
-class Pelanggan(private var saldo: Int) {
-
-    fun getSaldo(): Int {
-        return saldo
-    }
-
-    fun bayar(jumlah: Int): Boolean {
-        return if (jumlah <= saldo) {
-            saldo -= jumlah
-            true
-        } else {
-            false
-        }
-    }
-}
+class Pelanggan(var saldo: Int)
 
 // ================= CLASS DOKUMEN =================
 class Dokumen(val jumlahHalaman: Int)
 
 // ================= CLASS MESIN PRINT =================
-class MesinPrint(private var tinta: Int, private var kertas: Int) {
+class MesinPrint(var tinta: Int, var kertas: Int) {
 
-    private val hargaPerLembar = 500
+    val hargaPerLembar = 500
 
     fun cetakDokumen(dokumen: Dokumen, pelanggan: Pelanggan) {
 
@@ -46,26 +25,12 @@ class MesinPrint(private var tinta: Int, private var kertas: Int) {
         println("Mencetak ${dokumen.jumlahHalaman} halaman")
         println("Total biaya: Rp$totalBiaya")
 
-        // ATURAN 1: cek tinta & kertas
-        if (tinta == 0 || kertas == 0) {
-            println("❌ Gagal: Tinta atau kertas habis!")
-            return
-        }
-
-        // ATURAN 2: cek saldo
-        val cukup = pelanggan.bayar(totalBiaya)
-        if (!cukup) {
-            println("❌ Gagal: Saldo pelanggan tidak mencukupi!")
-            return
-        }
-
-        // PROSES CETAK
+        // BELUM ADA VALIDASI (masih tahap awal)
+        pelanggan.saldo -= totalBiaya
         tinta -= dokumen.jumlahHalaman
         kertas -= dokumen.jumlahHalaman
 
-        println("✅ Cetak berhasil!")
-        println("Sisa saldo: Rp${pelanggan.getSaldo()}")
-        println("Sisa tinta: $tinta")
-        println("Sisa kertas: $kertas")
+        println("Cetak selesai")
+        println("Sisa saldo: Rp${pelanggan.saldo}")
     }
 }
