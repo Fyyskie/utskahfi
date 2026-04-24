@@ -89,5 +89,6 @@ class MesinPrint(private var tinta: Int, private var kertas: Int) {
         println("Sisa saldo: Rp${pelanggan.getSaldo()}")
         println("Sisa tinta: $tinta")
         println("Sisa kertas: $kertas")
+
     }
 }
